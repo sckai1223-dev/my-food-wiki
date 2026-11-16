@@ -67,6 +67,16 @@ header h1 {
     padding: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     border: 1px solid #eee;
+    transition: transform 0.2s ease;
+}
+
+.restaurant-card:hover {
+    transform: translateY(-3px);
+}
+
+/* 確保點擊分類時能完美隱藏 */
+.restaurant-card.hidden {
+    display: none !important;
 }
 
 .restaurant-card h3 {
