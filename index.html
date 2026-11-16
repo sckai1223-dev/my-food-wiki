@@ -60,15 +60,18 @@
 
         buttons.forEach(button => {
             button.addEventListener('click', () => {
+                // 切換按鈕的高亮狀態
                 buttons.forEach(btn => btn.classList.remove('active'));
                 button.classList.add('active');
 
                 const category = button.getAttribute('data-category');
+                
+                // 篩選卡片顯示與隱藏
                 cards.forEach(card => {
                     if (category === '全部' || card.getAttribute('data-category') === category) {
-                        card.style.display = 'block';
+                        card.classList.remove('hidden');
                     } else {
-                        card.style.display = 'none';
+                        card.classList.add('hidden');
                     }
                 });
             });
