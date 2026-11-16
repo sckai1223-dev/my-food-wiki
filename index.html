@@ -16,31 +16,31 @@
 
     <main class="container">
         <section class="filter-section">
-            <button class="active">全部</button>
-            <button>早午餐</button>
-            <button>小吃</button>
-            <button>麵食</button>
-            <button>速食</button>
+            <button class="active" data-category="全部">全部</button>
+            <button data-category="早午餐">早午餐</button>
+            <button data-category="小吃">小吃</button>
+            <button data-category="麵食">麵食</button>
+            <button data-category="速食">速食</button>
         </section>
 
         <section class="restaurant-grid">
-            <div class="restaurant-card">
+            <div class="restaurant-card" data-category="早午餐">
                 <h3>早安有喜</h3>
                 <p class="category">分類：早午餐</p>
                 <p class="recommend">推薦：French toast, 蛋餅</p>
                 <div class="rating">⭐⭐⭐⭐⭐</div>
                 <p class="desc">氣氛舒適，餐點選擇豐富多樣。</p>
             </div>
-            <div class="restaurant-card">
+            <div class="restaurant-card" data-category="速食">
                 <h3>麥當勞</h3>
                 <p class="category">分類：速食</p>
                 <p class="recommend">推薦：薯條, 雞塊, 玉米濃湯</p>
                 <div class="rating">⭐⭐⭐⭐</div>
                 <p class="desc">宵夜與快速解決一餐的好選擇。</p>
             </div>
-            <div class="restaurant-card">
+            <div class="restaurant-card" data-category="速食">
                 <h3>拿坡里</h3>
-                <p class="category">分類：披薩炸雞</p>
+                <p class="category">分類：速食</p>
                 <p class="recommend">推薦：炸雞, 夏威夷披薩</p>
                 <div class="rating">⭐⭐⭐⭐⭐</div>
                 <p class="desc">炸雞皮脆多汁，聚餐首選。</p>
@@ -53,5 +53,26 @@
             <p>&copy; 2026 我的美食口袋名單</p>
         </div>
     </footer>
+
+    <script>
+        const buttons = document.querySelectorAll('.filter-section button');
+        const cards = document.querySelectorAll('.restaurant-card');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                buttons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const category = button.getAttribute('data-category');
+                cards.forEach(card => {
+                    if (category === '全部' || card.getAttribute('data-category') === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
